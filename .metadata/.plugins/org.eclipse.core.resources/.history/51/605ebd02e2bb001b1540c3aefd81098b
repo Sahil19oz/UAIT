@@ -1,0 +1,5 @@
+package com.sahiloz.repository;
+
+public interface AddressRepostory extends CrudRepository<Address, Integer> {
+
+}

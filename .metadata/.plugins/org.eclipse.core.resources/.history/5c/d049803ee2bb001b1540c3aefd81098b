@@ -1,0 +1,7 @@
+package com.sahiloz.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface AddressRepostory extends CrudRepository<Address, Integer> {
+
+}

@@ -1,0 +1,5 @@
+package com.sahiloz.entity;
+
+public class Address {
+
+}

@@ -1,0 +1,13 @@
+spring.application.name=UAIT
+server.port=8806
+
+spring.datasource.url=jdbc:mysql://localhost:3306/UAIT
+#spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.hibernate.ddl-auto=create
+
+#spring.datasource.username=root
+#spring.datasource.password=YOUR_PASSWORD
+
+#spring.jpa.database-platform=org.hibernate.dialect.MySQL
+spring.jpa.show-sql=false

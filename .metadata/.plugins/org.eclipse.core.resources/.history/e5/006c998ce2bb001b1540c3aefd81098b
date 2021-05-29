@@ -1,0 +1,5 @@
+package com.sahiloz.repository;
+
+public class AadharCard {
+
+}
