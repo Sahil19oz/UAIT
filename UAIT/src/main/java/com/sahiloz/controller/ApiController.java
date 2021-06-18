@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sahil19oz.serviceImpl.AddressServiceImpl;
+import com.sahiloz.dto.AddressDTO;
+
 @RestController
 @RequestMapping("/")
 public class ApiController {
@@ -16,6 +19,7 @@ public class ApiController {
 	
 	@GetMapping(value="/getAddress/{Aid}")
 	public ResponseEntity<AddressDTO> getAddressDetails(@PathVariable String Aid) {
+		return null;
 		
 	}
 
