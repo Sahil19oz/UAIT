@@ -1,0 +1,63 @@
+create database uait;
+use uait;
+
+create table ADDRESS(
+Addressid INT(255) PRIMARY KEY,
+Street varchar(50) NOT NULL,
+Town varchar(50) NOT NULL,
+District varchar(50) NOT NULL,
+State varchar(50) NOT NULL,
+zipcode varchar(50) NOT NULL,
+aadharNumber varchar(50),
+epicId varchar(50) ,
+
+);
+
+alter table address add unique(aadharnumber);
+alter table address add unique(epicId);
+
+#FOREIGN KEY(aadharNumber) REFERENCES AADHARCard(aadharNumber) ON DELETE SET NULL ON UPDATE CASCADE,
+#FOREIGN KEY(epicId) REFERENCES VoterCard(epicId) ON DELETE SET NULL ON UPDATE CASCADE,
+
+
+insert into ADDRESS (addressid,street,town,district,state,zipcode) values
+(1111222233,"hc road","jorebunglow","darjeeling","west bengal","734005"),
+(1111200233,"hill cart road","darjeeling","darjeeling","west bengal","734105"),
+(1111123233,"sp road","kalimpong","darjeeling","west bengal","734102"),
+(1111225633,"mukherjee road","ghoom","darjeeling","west bengal","734022"),
+(1111222433,"laden la road","siliguri","darjeeling","west bengal","734005");
+
+create table AADHARCARD(
+aadharnumber varchar(50) PRIMARY KEY,
+name varchar(50) NOT NULL,
+DOB date NOT NULL,
+gender varchar(15) NOT NULL,
+addressID INT(255)NOT NULL,
+FOREIGN KEY(addressID) REFERENCES ADDRESS(addressID)
+);
+
+insert into AADHARCARD values
+("182637281922","Sahil Agarwal","1997-08-19","male",1111225633),
+("182633331922","Harsh Agarwal","1994-03-10","male",1111200233),
+("182639878922","Yash Agarwal","1996-04-29","female",1111123233),
+("182637123922","Prateek Bansal","1995-10-09","male",1111225633),
+("111637281922","Vishal Tulsani","1997-12-11","male",1111222433);
+
+
+create table VOTERCARD(
+epicId varchar(50) PRIMARY KEY,
+name varchar(50) NOT NULL,
+DOB date NOT NULL,
+gender varchar(15) NOT NULL,
+addressID INT(255)NOT NULL,
+FOREIGN KEY(addressID) REFERENCES ADDRESS(addressID)
+);
+
+
+insert into VOTERCARD values
+("123DHB67DD","Sahil Agarwal","1997-08-19","male",1111225633),
+("HUD86968D7","Harsh Agarwal","1994-03-10","male",1111200233),
+("7Y8YYHG67Q","Yash Agarwal","1996-04-29","female",1111123233),
+("99UY785RT6","Prateek Bansal","1995-10-09","male",1111225633),
+("667TGSH79S","Vishal Tulsani","1997-12-11","male",1111222433);
+
