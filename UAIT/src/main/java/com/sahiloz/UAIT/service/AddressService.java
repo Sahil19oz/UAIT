@@ -1,6 +1,6 @@
-package com.sahiloz.service;
+package com.sahiloz.UAIT.service;
 
-import com.sahiloz.dto.AddressDTO;
+import com.sahiloz.UAIT.dto.AddressDTO;
 
 public interface AddressService {
 	

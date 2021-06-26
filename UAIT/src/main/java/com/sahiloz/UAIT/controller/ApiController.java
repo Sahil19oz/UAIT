@@ -1,4 +1,4 @@
-package com.sahiloz.controller;
+package com.sahiloz.UAIT.controller;
 
 
 import javax.validation.Valid;
@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.sahiloz.dto.AddressDTO;
-import com.sahiloz.entity.Address;
-import com.sahiloz.service.AddressServiceImpl;
+import com.sahiloz.UAIT.dto.AddressDTO;
+import com.sahiloz.UAIT.entity.Address;
+import com.sahiloz.UAIT.service.AddressServiceImpl;
 
 @CrossOrigin
 @RestController
@@ -34,11 +34,17 @@ public class ApiController {
 	@Autowired
 	private Environment env;
 	
-	@GetMapping(value="/getAddress/{addressId}")
-	public ResponseEntity<AddressDTO> getAddressDetails(@PathVariable("addressId") Integer addressId) throws Exception {
+	@GetMapping(value="")
+	public ResponseEntity<String> test(){
+		return new ResponseEntity<String>("Inside Controller",HttpStatus.OK);
+	}
+	
+	@GetMapping(value="getAddress/{addressId}")
+	public ResponseEntity<AddressDTO> getAddressDetails(@PathVariable("addressId") String addressId) throws Exception {
 		 try
 	       {
-	           AddressDTO address = addressService.getAddress(addressId.toString());
+			 System.out.println("Hello from inside");
+	           AddressDTO address = addressService.getAddress(addressId);
 	           return new ResponseEntity<AddressDTO>(address, HttpStatus.OK);
 	           
 	       }

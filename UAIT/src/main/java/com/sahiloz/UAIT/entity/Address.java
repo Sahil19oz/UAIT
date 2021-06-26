@@ -1,4 +1,4 @@
-package com.sahiloz.entity;
+package com.sahiloz.UAIT.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.sahiloz.UAIT.dto.AddressDTO;
 
 @Entity
 @Table(name="ADDRESS")
@@ -29,19 +31,19 @@ public class Address {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="aadharNumber")
-	private String aadharNumber;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="epicId")
+	private AadharCard aadharNumber;
+//	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="epicId")
 	private String epicId;
 	
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="panNumber")
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="panNumber")
 	private String panNumber;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="passportId")
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="passportId")
 	private String passportId;
 
 	
@@ -93,11 +95,11 @@ public class Address {
 		this.state = state;
 	}
 
-	public String getAadharNumber() {
+	public AadharCard getAadharNumber() {
 		return aadharNumber;
 	}
 
-	public void setAadharNumber(String aadharNumber) {
+	public void setAadharNumber(AadharCard aadharNumber) {
 		this.aadharNumber = aadharNumber;
 	}
 
@@ -123,6 +125,21 @@ public class Address {
 
 	public void setPassportId(String passportId) {
 		this.passportId = passportId;
+	}
+	
+	public static AddressDTO changeToDTO(Address addressObj) {
+		AddressDTO address=new AddressDTO();
+		address.setAddressID(addressObj.getAddressID());
+		address.setStreet(addressObj.getStreet());
+		address.setTown(addressObj.getTown());
+		address.setDistrict(addressObj.getDistrict());
+		address.setZipCode(addressObj.getZipCode());
+		address.setAadharNumber(addressObj.getAadharNumber());
+		address.setState(addressObj.getState());
+		address.setEpicId(addressObj.getEpicId());
+		address.setPanNumber(addressObj.getPanNumber());
+		address.setPassportId(addressObj.getPassportId());
+		return address;
 	}
 
 	@Override

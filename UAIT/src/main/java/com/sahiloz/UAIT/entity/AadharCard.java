@@ -1,4 +1,4 @@
-package com.sahiloz.repository;
+package com.sahiloz.UAIT.entity;
 
 import java.util.Date;
 
@@ -20,9 +20,10 @@ public class AadharCard {
 	private String gender;
 	
 	private Date DOB;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="addressId")
-	private String addressId;
+	private Address addressId;
 	
 	
 	@Override
@@ -96,10 +97,10 @@ public class AadharCard {
 	public void setDOB(Date dOB) {
 		DOB = dOB;
 	}
-	public String getAddressId() {
+	public Address getAddressId() {
 		return addressId;
 	}
-	public void setAddressId(String addressId) {
+	public void setAddressId(Address addressId) {
 		this.addressId = addressId;
 	}
 	

@@ -1,27 +1,31 @@
-package com.sahiloz.service;
+package com.sahiloz.UAIT.service;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.sahiloz.dto.AddressDTO;
-import com.sahiloz.entity.Address;
-import com.sahiloz.repository.AddressRepostory;
+import com.sahiloz.UAIT.dto.AddressDTO;
+import com.sahiloz.UAIT.entity.Address;
+import com.sahiloz.UAIT.repository.AddressRepostory;
 
+@Service
+@Transactional
 public class AddressServiceImpl implements AddressService {
-
-	@Autowired
-	private AddressDTO addressDTO;
 	
 	@Autowired
 	private AddressRepostory addressRepo;
 	
 	@Override
-	public AddressDTO getAddress(String addressID) {
-		AddressDTO addressObj=addressRepo.findByAddressID(addressID);
+	public AddressDTO getAddress(String addressID) throws Exception{
+		Address addressObj=addressRepo.findByAddressID(Integer.parseInt(addressID));
 		if(addressObj==null) {
 			System.out.println("Address record does not exist");
 			return null;
 		}
-		return addressObj;
+		AddressDTO obj=Address.changeToDTO(addressObj);
+		
+		return obj;
 	}
 
 	@Override

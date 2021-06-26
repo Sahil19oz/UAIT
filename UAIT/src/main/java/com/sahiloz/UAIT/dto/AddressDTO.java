@@ -1,8 +1,8 @@
-package com.sahiloz.dto;
+package com.sahiloz.UAIT.dto;
 
 import javax.validation.constraints.NotNull;
 
-import com.sahiloz.entity.Address;
+import com.sahiloz.UAIT.entity.AadharCard;
 
 
 public class AddressDTO {
@@ -19,7 +19,7 @@ public class AddressDTO {
 	@NotNull(message= "Please enter the state")
 	private String state;
 	@NotNull(message="Please enter the aadhar number")
-	private String aadharNumber;
+	private AadharCard aadharNumber;
 	
 	private String epicId;
 	private String panNumber;
@@ -74,12 +74,12 @@ public class AddressDTO {
 		this.state = state;
 	}
 
-	public String getAadharNumber() {
+	public AadharCard getAadharNumber() {
 		return aadharNumber;
 	}
 
-	public void setAadharNumber(String aadharNumber) {
-		this.aadharNumber = aadharNumber;
+	public void setAadharNumber(AadharCard aadharCard) {
+		this.aadharNumber = aadharCard;
 	}
 
 	public String getEpicId() {
