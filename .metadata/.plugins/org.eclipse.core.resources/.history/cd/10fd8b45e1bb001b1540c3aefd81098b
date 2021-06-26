@@ -1,5 +1,0 @@
-package com.sahiloz.repository;
-
-public interface AddressRepostory {
-
-}
