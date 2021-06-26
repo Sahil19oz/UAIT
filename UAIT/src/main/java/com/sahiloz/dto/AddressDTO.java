@@ -2,6 +2,8 @@ package com.sahiloz.dto;
 
 import javax.validation.constraints.NotNull;
 
+import com.sahiloz.entity.Address;
+
 
 public class AddressDTO {
 	
