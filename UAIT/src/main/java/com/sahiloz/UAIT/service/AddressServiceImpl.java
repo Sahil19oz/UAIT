@@ -1,5 +1,8 @@
 package com.sahiloz.UAIT.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +32,25 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
+	public List<AddressDTO> getAddresses() {
+		List<Address> obj=addressRepo.getAllAddress();
+		if(obj.isEmpty()) {
+			System.out.println("No addresses found");
+			return null;
+		}
+		List<AddressDTO> addresses = new ArrayList<>();;
+		for(Address add: obj) {
+			addresses.add(Address.changeToDTO(add));
+		}
+		return addresses;
+	}
+	@Override
 	public Integer postAddress(AddressDTO address) {
-		// TODO Auto-generated method stub
-		return null;
+		Address newAddress=Address.changeToEntity(address);
+		return addressRepo.save(newAddress).getAddressID();
+		
+		
+		
 	}
 
 	@Override
@@ -44,5 +63,7 @@ public class AddressServiceImpl implements AddressService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

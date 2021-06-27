@@ -1,6 +1,8 @@
 package com.sahiloz.UAIT.controller;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +36,6 @@ public class ApiController {
 	@Autowired
 	private Environment env;
 	
-	@GetMapping(value="")
-	public ResponseEntity<String> test(){
-		return new ResponseEntity<String>("Inside Controller",HttpStatus.OK);
-	}
-	
 	@GetMapping(value="getAddress/{addressId}")
 	public ResponseEntity<AddressDTO> getAddressDetails(@PathVariable("addressId") String addressId) throws Exception {
 		 try
@@ -46,6 +43,21 @@ public class ApiController {
 			 System.out.println("Hello from inside");
 	           AddressDTO address = addressService.getAddress(addressId);
 	           return new ResponseEntity<AddressDTO>(address, HttpStatus.OK);
+	           
+	       }
+	       catch (Exception e) {
+	           throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+	       }
+		
+	}
+	
+	@GetMapping(value="getAddress")
+	public ResponseEntity<List<AddressDTO>> getAddresses() throws Exception {
+		 try
+	       {
+	           List<AddressDTO> addresses = addressService.getAddresses();
+	           
+	           return new ResponseEntity<>(addresses, HttpStatus.OK);
 	           
 	       }
 	       catch (Exception e) {

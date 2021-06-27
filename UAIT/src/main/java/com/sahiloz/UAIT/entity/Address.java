@@ -29,8 +29,8 @@ public class Address {
 	
 	private String state;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="aadharNumber")
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="aadharNumber",nullable = true)
 	private AadharCard aadharNumber;
 //	
 //	@OneToOne(cascade = CascadeType.ALL)
@@ -40,11 +40,12 @@ public class Address {
 
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name="panNumber")
-	private String panNumber;
-	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="passportId")
-	private String passportId;
+//	@Column(name="pannumber")
+//	private String panNumber;
+//	
+////	@OneToOne(cascade = CascadeType.ALL)
+////	@JoinColumn(name="passportId")
+//	private String passportId;
 
 	
 	public Integer getAddressID() {
@@ -111,21 +112,21 @@ public class Address {
 		this.epicId = epicId;
 	}
 
-	public String getPanNumber() {
-		return panNumber;
-	}
-
-	public void setPanNumber(String panNumber) {
-		this.panNumber = panNumber;
-	}
-
-	public String getPassportId() {
-		return passportId;
-	}
-
-	public void setPassportId(String passportId) {
-		this.passportId = passportId;
-	}
+//	public String getPanNumber() {
+//		return panNumber;
+//	}
+//
+//	public void setPanNumber(String panNumber) {
+//		this.panNumber = panNumber;
+//	}
+//
+//	public String getPassportId() {
+//		return passportId;
+//	}
+//
+//	public void setPassportId(String passportId) {
+//		this.passportId = passportId;
+//	}
 	
 	public static AddressDTO changeToDTO(Address addressObj) {
 		AddressDTO address=new AddressDTO();
@@ -137,8 +138,23 @@ public class Address {
 		address.setAadharNumber(addressObj.getAadharNumber());
 		address.setState(addressObj.getState());
 		address.setEpicId(addressObj.getEpicId());
-		address.setPanNumber(addressObj.getPanNumber());
-		address.setPassportId(addressObj.getPassportId());
+//		address.setPanNumber(addressObj.getPanNumber());
+//		address.setPassportId(addressObj.getPassportId());
+		return address;
+	}
+	
+	public static Address changeToEntity(AddressDTO addressObj) {
+		Address address=new Address();
+		address.setAddressID(addressObj.getAddressID());
+		address.setStreet(addressObj.getStreet());
+		address.setTown(addressObj.getTown());
+		address.setDistrict(addressObj.getDistrict());
+		address.setZipCode(addressObj.getZipCode());
+		address.setAadharNumber(addressObj.getAadharNumber());
+		address.setState(addressObj.getState());
+		address.setEpicId(addressObj.getEpicId());
+//		address.setPanNumber(addressObj.getPanNumber());
+//		address.setPassportId(addressObj.getPassportId());
 		return address;
 	}
 
@@ -146,16 +162,7 @@ public class Address {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((aadharNumber == null) ? 0 : aadharNumber.hashCode());
 		result = prime * result + ((addressID == null) ? 0 : addressID.hashCode());
-		result = prime * result + ((district == null) ? 0 : district.hashCode());
-		result = prime * result + ((epicId == null) ? 0 : epicId.hashCode());
-		result = prime * result + ((panNumber == null) ? 0 : panNumber.hashCode());
-		result = prime * result + ((passportId == null) ? 0 : passportId.hashCode());
-		result = prime * result + ((state == null) ? 0 : state.hashCode());
-		result = prime * result + ((street == null) ? 0 : street.hashCode());
-		result = prime * result + ((town == null) ? 0 : town.hashCode());
-		result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
 		return result;
 	}
 
@@ -164,59 +171,6 @@ public class Address {
 		if (this == obj)
 			return true;
 		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Address other = (Address) obj;
-		if (aadharNumber == null) {
-			if (other.aadharNumber != null)
-				return false;
-		} else if (!aadharNumber.equals(other.aadharNumber))
-			return false;
-		if (addressID == null) {
-			if (other.addressID != null)
-				return false;
-		} else if (!addressID.equals(other.addressID))
-			return false;
-		if (district == null) {
-			if (other.district != null)
-				return false;
-		} else if (!district.equals(other.district))
-			return false;
-		if (epicId == null) {
-			if (other.epicId != null)
-				return false;
-		} else if (!epicId.equals(other.epicId))
-			return false;
-		if (panNumber == null) {
-			if (other.panNumber != null)
-				return false;
-		} else if (!panNumber.equals(other.panNumber))
-			return false;
-		if (passportId == null) {
-			if (other.passportId != null)
-				return false;
-		} else if (!passportId.equals(other.passportId))
-			return false;
-		if (state == null) {
-			if (other.state != null)
-				return false;
-		} else if (!state.equals(other.state))
-			return false;
-		if (street == null) {
-			if (other.street != null)
-				return false;
-		} else if (!street.equals(other.street))
-			return false;
-		if (town == null) {
-			if (other.town != null)
-				return false;
-		} else if (!town.equals(other.town))
-			return false;
-		if (zipCode == null) {
-			if (other.zipCode != null)
-				return false;
-		} else if (!zipCode.equals(other.zipCode))
 			return false;
 		return true;
 	}

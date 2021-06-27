@@ -20,7 +20,6 @@ public class AddressDTO {
 	private String state;
 	@NotNull(message="Please enter the aadhar number")
 	private AadharCard aadharNumber;
-	
 	private String epicId;
 	private String panNumber;
 	private String passportId;
